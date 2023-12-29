@@ -16,8 +16,8 @@ To run this project, you need to have Python installed on your machine. The proj
 ### Clone the Repository
 
 ```bash
-git clone [Your Repository URL]
-cd [Your Repository Directory]
+git clone https://github.com/Kheem-Dh/RasaNegotiationChatbot.git
+cd RasaNegotiationChatbot
 ```
 
 ## Setup Virtual Environment
