@@ -1,0 +1,54 @@
+version: "3.1"
+
+stories:
+  - story: basic_greeting
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - story: basic_goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: user_feeling_great
+    steps:
+      - intent: mood_great
+      - action: utter_happy
+
+  - story: user_feeling_unhappy
+    steps:
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
+
+  - story: user_unhappy_denial
+    steps:
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_goodbye
+
+  - story: bot_challenge_interaction
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - story: product_negotiation_samsung
+    steps:
+      - intent: make_offer
+        entities:
+          - product: "Samsung Galaxy S10"
+      - action: action_negotiate_price
+      - action: utter_counter_offer
+
+  - story: product_negotiation_iphone
+    steps:
+      - intent: make_offer
+        entities:
+          - product: "iPhone 8"
+      - action: action_negotiate_price
+      - action: utter_counter_offer

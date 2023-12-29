@@ -1,0 +1,40 @@
+version: "3.1"
+
+rules:
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Say goodbye to user
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Respond to user's positive mood
+    steps:
+      - intent: mood_great
+      - action: utter_happy
+
+  - rule: Confirm bot identity
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: Negotiation for Samsung Galaxy S10
+    condition:
+      - slot_was_set:
+          - product: "Samsung Galaxy S10"
+    steps:
+      - intent: make_offer
+      - action: action_negotiate_price
+      - action: utter_counter_offer
+
+  - rule: Negotiation for iPhone 8
+    condition:
+      - slot_was_set:
+          - product: "iPhone 8"
+    steps:
+      - intent: make_offer
+      - action: action_negotiate_price
+      - action: utter_counter_offer

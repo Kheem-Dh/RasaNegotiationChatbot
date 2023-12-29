@@ -1,0 +1,58 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - make_offer
+
+entities:
+  - product
+  - offer_price
+
+slots:
+  product:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: product
+  offer_price:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: offer_price
+  counter_offer_price:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I assist you today?"
+  utter_goodbye:
+    - text: "Goodbye! Have a great day."
+  utter_happy:
+    - text: "Great to hear that!"
+  utter_cheer_up:
+    - text: "I'm sorry to hear that. Let's see if we can improve your day."
+  utter_did_that_help:
+    - text: "Did that help you?"
+  utter_iamabot:
+    - text: "I am a bot, here to help you."
+  utter_counter_offer:
+    - text: "How about {counter_offer_price} for the {product}?"
+
+actions:
+  - action_negotiate_price
+  - action_counter_offer
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

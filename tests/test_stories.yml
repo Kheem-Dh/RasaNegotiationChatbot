@@ -1,0 +1,44 @@
+stories:
+  - story: happy path 1
+    steps:
+      - user: |
+          hello there!
+        intent: greet
+      - action: utter_greet
+      - user: |
+          I'll offer $250 for the Samsung Galaxy S10.
+        intent: make_offer
+        entities:
+          - product: "Samsung Galaxy S10"
+          - offer_price: "250"
+      - action: action_negotiate_price
+      - action: utter_counter_offer
+
+  - story: happy path 2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Can I get the iPhone 8 for $320?
+        intent: make_offer
+        entities:
+          - product: "iPhone 8"
+          - offer_price: "320"
+      - action: action_negotiate_price
+      - action: utter_counter_offer
+
+  - story: bot challenge interaction
+    steps:
+      - user: |
+          are you a bot?
+        intent: bot_challenge
+      - action: utter_iamabot
+
+  - story: simple goodbye
+    steps:
+      - user: |
+          goodbye
+        intent: goodbye
+      - action: utter_goodbye
